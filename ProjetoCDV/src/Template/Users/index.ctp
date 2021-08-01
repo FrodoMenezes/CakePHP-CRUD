@@ -3,7 +3,7 @@
         <h2 class="display-4 titulo">Listar usuários</h2>
     </div>
     <div class="p-2">
-        <?= $this->Html->link(__('Cadastrar'), ['controller' => 'users', 'action' => 'add'], ['class' => 'btn btn-outline-success btn-sm']); ?>
+        <?= $this->Html->link(__('Cadastrar'),['controller' => 'users','action' => 'add'], ['class' => 'btn btn-outline-success btn-sm']); ?>
     </div>
 </div>
 <?= $this->Flash->render() ?>
@@ -23,29 +23,17 @@
                 <tr>
                     <td><?= $this->Number->format($user->id) ?></td>
                     <td><?= h($user->name) ?></td>
-                    <td class="d-none d-sm-table-cell"><?= h($user->email) ?></td>
-                    <td class="d-none d-lg-table-cell"><?= h($user->created) ?></td>
-                    <td class="text-center">
+                    <td class="d-none d-sm-table-cell"> <?= h($user->email) ?> </td>
+                    <td class="d-none d-lg-table-cell"> <?= h($user->created) ?> </td>
+                    <td>
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Tem certeza que quer excluir? # {0}?', $user->id)]) ?>                           
                     </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
-</div>
 
-<div class="users index large-9 medium-8 columns content">
-    <h3><?= __('Pessoas') ?></h3>    
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('primeira')) ?>
-            <?= $this->Paginator->prev('< ' . __('anterior')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('anterior') . ' >') ?>
-            <?= $this->Paginator->last(__('último') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Página {{page}} de {{pages}}, mostrando {{current}} de um total de {{count}}')]) ?></p>
-    </div>
+    <?= $this->element('pagination'); ?>
 </div>

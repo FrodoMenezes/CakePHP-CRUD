@@ -9,8 +9,9 @@ class PessoasController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Users']
+            'limit' => 5
         ];
+        
         $pessoas = $this->paginate($this->Pessoas);
 
         $this->set(compact('pessoas'));

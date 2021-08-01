@@ -8,6 +8,10 @@ class UsersController extends AppController
 
     public function index()
     {
+        $this->paginate = [
+            'limit' => 5
+        ];
+                
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
@@ -32,7 +36,7 @@ class UsersController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('O usuário não pode ser cadastrado. Por favor, tentar novamente.'));
+            $this->Flash->danger(__('O usuário não pode ser cadastrado. Por favor, tentar novamente.'));
         }
         $this->set(compact('user'));
     }
@@ -49,7 +53,7 @@ class UsersController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('O usuário não pode ser editado. Por favor, tentar novamente.'));
+            $this->Flash->danger(__('O usuário não pode ser editado. Por favor, tentar novamente.'));
         }
         $this->set(compact('user'));
     }
@@ -61,7 +65,7 @@ class UsersController extends AppController
         if ($this->Users->delete($user)) {
             $this->Flash->success(__('O usuário foi excluído.'));
         } else {
-            $this->Flash->error(__('O usuário não pode ser excluído. Por favor, tentar novamente'));
+            $this->Flash->danger(__('O usuário não pode ser excluído. Por favor, tentar novamente'));
         }
 
         return $this->redirect(['action' => 'index']);
