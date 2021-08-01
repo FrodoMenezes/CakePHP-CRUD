@@ -10,12 +10,13 @@
         <li><?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $pessoa->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $pessoa->id)]
+                ['confirm' => __('Você tem certeza que quer excluír # {0}?', $pessoa->id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Pessoas'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Listar pessoas'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Listar usuários'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Novo usuário'), ['controller' => 'Users', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('Sair'), ['action' => 'logout']) ?></li>
     </ul>
 </nav>
 <div class="pessoas form large-9 medium-8 columns content">
@@ -29,6 +30,6 @@
             echo $this->Form->control('user_id', ['options' => $users, 'empty' => true]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Salvar')) ?>
     <?= $this->Form->end() ?>
 </div>

@@ -7,12 +7,13 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Pessoa'), ['action' => 'edit', $pessoa->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Pessoa'), ['action' => 'delete', $pessoa->id], ['confirm' => __('Are you sure you want to delete # {0}?', $pessoa->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Pessoas'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Pessoa'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Editar pessoa'), ['action' => 'edit', $pessoa->id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Excluír pessoa'), ['action' => 'delete', $pessoa->id], ['confirm' => __('Are you sure you want to delete # {0}?', $pessoa->id)]) ?> </li>
+        <li><?= $this->Html->link(__('Listar pessoas'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Nova pessoa'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Listar usuários'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Novo usuário'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Sair'), ['action' => 'logout']) ?></li>
     </ul>
 </nav>
 <div class="pessoas view large-9 medium-8 columns content">
