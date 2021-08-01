@@ -28,11 +28,11 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('O usuário foi salvo com sucesso!'));
+                $this->Flash->success(__('O usuário foi cadastado com sucesso!'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('O usuário não pode ser salvo. Por favor, tentar novamente.'));
+            $this->Flash->error(__('O usuário não pode ser cadastrado. Por favor, tentar novamente.'));
         }
         $this->set(compact('user'));
     }
@@ -45,11 +45,11 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('O usuário foi salvo com sucesso!'));
+                $this->Flash->success(__('O usuário foi editado com sucesso!'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('O usuário não pode ser salvo. Por favor, tentar novamente.'));
+            $this->Flash->error(__('O usuário não pode ser editado. Por favor, tentar novamente.'));
         }
         $this->set(compact('user'));
     }
@@ -59,9 +59,9 @@ class UsersController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('O usuário foi excluido.'));
+            $this->Flash->success(__('O usuário foi excluído.'));
         } else {
-            $this->Flash->error(__('O usuário não pode ser salvo. Por favor, tentar novamente'));
+            $this->Flash->error(__('O usuário não pode ser excluído. Por favor, tentar novamente'));
         }
 
         return $this->redirect(['action' => 'index']);
