@@ -28,7 +28,7 @@
                     <td class="d-none d-sm-table-cell"> <?= h($pessoa->etapa) ?> </td>
                     <td class="d-none d-lg-table-cell"> <?= h($pessoa->created) ?> </td>
                     <td>
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $pessoa->id]) ?>
+                        <?= $this->Html->link(__('Visualizar'), ['controller' => 'pessoas', 'action' => 'view', $pessoa->id], ['class' => 'btn btn-outline-primary btn-sm']) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $pessoa->id]) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $pessoa->id], ['confirm' => __('Tem certeza que quer excluir? # {0}?', $pessoa->id)]) ?>                           
                     </td>

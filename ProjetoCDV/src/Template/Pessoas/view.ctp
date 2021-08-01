@@ -1,51 +1,51 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Pessoa $pessoa
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Editar pessoa'), ['action' => 'edit', $pessoa->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Excluír pessoa'), ['action' => 'delete', $pessoa->id], ['confirm' => __('Are you sure you want to delete # {0}?', $pessoa->id)]) ?> </li>
-        <li><?= $this->Html->link(__('Listar pessoas'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Nova pessoa'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('Listar usuários'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('Novo usuário'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('Sair'), ['action' => 'logout']) ?></li>
-    </ul>
-</nav>
-<div class="pessoas view large-9 medium-8 columns content">
-    <h3><?= h($pessoa->name) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Name') ?></th>
-            <td><?= h($pessoa->name) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Cpf') ?></th>
-            <td><?= h($pessoa->cpf) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Etapa') ?></th>
-            <td><?= h($pessoa->etapa) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('User') ?></th>
-            <td><?= $pessoa->has('user') ? $this->Html->link($pessoa->user->name, ['controller' => 'Users', 'action' => 'view', $pessoa->user->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($pessoa->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($pessoa->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($pessoa->modified) ?></td>
-        </tr>
-    </table>
-</div>
+<div class="d-flex">
+    <div class="mr-auto p-2">
+        <h2 class="display-4 titulo">Usuário</h2>
+    </div>
+    <div class="p-2">
+        <span class="d-none d-md-block">
+            <?= $this->Html->link(__('Listar'), ['controller' => 'pessoas', 'action' => 'index'], ['class' => 'btn btn-outline-info btn-sm']) ?>
+
+            <?= $this->Html->link(__('Editar'), ['controller' => 'pessoas', 'action' => 'edit', $pessoa->id], ['class' => 'btn btn-outline-warning btn-sm']) ?>
+
+            <?= $this->Form->postLink(__('Apagar'), ['controller' => 'pessoas', 'action' => 'delete', $pessoa->id], ['class' => 'btn btn-outline-danger btn-sm', 'confirm' => __('Relamente deseja apagar o usuário # {0}?', $pessoa->id)]) ?>
+
+        </span>
+        <div class="dropdown d-block d-md-none">
+            <button class="btn btn-primary dropdown-toggle btn-sm" type="button" id="acoesListar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Ações
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="acoesListar">
+                <?= $this->Html->link(__('Listar'), ['controller' => 'pessoas', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+
+                <?= $this->Html->link(__('Editar'), ['controller' => 'pessoas', 'action' => 'edit', $pessoa->id], ['class' => 'dropdown-item']) ?>
+
+                <?= $this->Form->postLink(__('Apagar'), ['controller' => 'pessoas', 'action' => 'delete', $pessoa->id], ['class' => 'dropdown-item', 'confirm' => __('Relamente deseja apagar o usuário # {0}?', $pessoa->id)]) ?>                                    
+            </div>
+        </div>
+    </div>
+</div><hr>
+
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9"><?= $this->Number->format($pessoa->id) ?></dd>
+
+    <dt class="col-sm-3">Nome</dt>
+    <dd class="col-sm-9"><?= h($pessoa->name) ?></dd>
+
+    <dt class="col-sm-3">CPF</dt>
+    <dd class="col-sm-9"><?= h($pessoa->cpf) ?></dd>
+
+    <dt class="col-sm-3">Etapa</dt>
+    <dd class="col-sm-9"><?= h($pessoa->etapa) ?></dd>
+
+    <dt class="col-sm-3 text-truncate">ID do usuário vinculado</dt>
+    <dd class="col-sm-9"><?= h($pessoa->user_id) ?></dd>
+
+    <dt class="col-sm-3 text-truncate">Cadastro</dt>
+    <dd class="col-sm-9"><?= h($pessoa->created) ?></dd>
+
+    <dt class="col-sm-3 text-truncate">Alteração</dt>
+    <dd class="col-sm-9"><?= h($pessoa->modified) ?></dd>
+
+</dl>
