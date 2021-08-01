@@ -1,52 +1,43 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Pessoa[]|\Cake\Collection\CollectionInterface $pessoas
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Nova pessoa'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Listar usuários'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('Novo usuário'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('Sair'), ['action' => 'logout']) ?></li>
-    </ul>
-</nav>
-<div class="pessoas index large-9 medium-8 columns content">
-    <h3><?= __('Pessoas') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+<div class="d-flex">
+    <div class="mr-auto p-2">
+        <h2 class="display-4 titulo">Listar pessoas</h2>
+    </div>
+    <div class="p-2">
+        <?= $this->Html->link(__('Cadastrar'), ['controller' => 'pessoas', 'action' => 'add'], ['class' => 'btn btn-outline-success btn-sm']); ?>
+    </div>
+</div>
+<?= $this->Flash->render() ?>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('name') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('cpf') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('etapa') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
+                <th>ID</th>
+                <th>Nome</th>
+                <th class="d-none d-sm-table-cell">E-mail</th>
+                <th class="d-none d-lg-table-cell">Data do Cadastro</th>
+                <th class="text-center">Ações</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($pessoas as $pessoa): ?>
-            <tr>
-                <td><?= $this->Number->format($pessoa->id) ?></td>
-                <td><?= h($pessoa->name) ?></td>
-                <td><?= h($pessoa->cpf) ?></td>
-                <td><?= h($pessoa->etapa) ?></td>
-                <td><?= $pessoa->has('user') ? $this->Html->link($pessoa->user->name, ['controller' => 'Users', 'action' => 'view', $pessoa->user->id]) : '' ?></td>
-                <td><?= h($pessoa->created) ?></td>
-                <td><?= h($pessoa->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $pessoa->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $pessoa->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $pessoa->id], ['confirm' => __('Você tem certeza que quer excluír # {0}?', $pessoa->id)]) ?>
-                </td>
-            </tr>
+                <tr>
+                    <td><?= $this->Number->format($pessoa->id) ?></td>
+                    <td><?= h($pessoa->name) ?></td>
+                    <td class="d-none d-sm-table-cell"><?= h($pessoa->email) ?></td>
+                    <td class="d-none d-lg-table-cell"><?= h($pessoa->created) ?></td>
+                    <td class="text-center">
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $pessoa->id]) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $pessoa->id]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $pessoa->id], ['confirm' => __('Are you sure you want to delete # {0}?', $pessoa->id)]) ?>
+                    </td>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
+</div>
+
+<div class="users index large-9 medium-8 columns content">
+    <h3><?= __('Pessoas') ?></h3>    
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->first('<< ' . __('primeira')) ?>
