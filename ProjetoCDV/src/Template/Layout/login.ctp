@@ -24,6 +24,6 @@ $cakeDescription = 'Login';
     <?= $this->Flash->render() ?>
     <?= $this->fetch('content') ?>
 
-    <?= $this->Html->script(['jquery-3.6.0.min', 'signin']) ?>
+    <?= $this->Html->script(['jquery-3.6.0.min', 'bootstrap.min']) ?>
 </body>
 </html>

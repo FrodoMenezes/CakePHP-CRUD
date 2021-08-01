@@ -24,7 +24,8 @@ class AppController extends Controller
             'logoutRedirect'=>[
                 'controller'=>'users',
                 'action'=>'login'
-            ]
+            ],
+            'authError' => false
         ]);
 
     }
@@ -33,6 +34,10 @@ class AppController extends Controller
     {
         if(($this->request->getParam(['action']) !== null ) AND ($this->request->getParam(['action']) == 'login')){
             $this->viewBuilder()->setLayout('login');
+        }
+        else
+        {
+            $this->viewBuilder()->setLayout('admin');
         }
     }
 }
