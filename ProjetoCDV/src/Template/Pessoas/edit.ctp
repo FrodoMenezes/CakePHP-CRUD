@@ -41,7 +41,15 @@
 <div class="form-row">
     <div class="form-group col-md-6">
         <label><span class="text-danger">*</span>Etapa</label>
-        <?= $this->Form->control('etapa', ['class' => 'form-control', 'placeholder' => 'Alterar a etapa', 'label' => false]) ?>
+        <?=    
+            $this->Form->input('etapa',
+                array(
+                   'type'=>'select',
+                   'class' => 'form-control',
+                   'options' => array('Aguardando assinatura de documentos' => 'Aguardando assinatura de documentos', 'Aguardando transferência de recursos'=> 'Aguardando transferência de recursos', 'Gestão de patrimônio ativa' => 'Gestão de patrimônio ativa'),
+                   'label' => false
+                ));
+        ?>
     </div>
     <div class="form-group col-md-6">
         <label><span class="text-danger">*</span>ID do usuário vinculado</label>
