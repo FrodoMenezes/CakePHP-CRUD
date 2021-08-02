@@ -22,8 +22,16 @@
 
 <div class="form-row">
     <div class="form-group col-md-12">
-        <label><span class="text-danger">*</span> Usuário</label>
-        <?= $this->Form->control('etapa', ['class' => 'form-control', 'placeholder' => 'Informe a etapa', 'label' => false]) ?>
+        <label><span class="text-danger">*</span> Etapa </label>
+        <?= 
+            $this->Form->input('etapa',
+                array(
+                   'type'=>'select',
+                   'class' => 'form-control',
+                   'options' => array('Aguardando assinatura de documentos' => 'Aguardando assinatura de documentos', 'Aguardando transferência de recursos'=> 'Aguardando transferência de recursos', 'Gestão de patrimônio ativa' => 'Gestão de patrimônio ativa'),
+                   'label' => false
+                ));
+        ?>
     </div>
 </div>
 

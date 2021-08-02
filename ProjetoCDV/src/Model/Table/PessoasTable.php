@@ -40,7 +40,13 @@ class PessoasTable extends Table
             ->scalar('cpf')
             ->maxLength('cpf', 220)
             ->requirePresence('cpf', 'create')
-            ->notEmpty('cpf');
+            ->notEmpty('cpf')
+            ->add('cpf', [
+                    'length' => [
+                        'rule' => ['minLength', 11],
+                        'message' => 'CPF inválido.',
+                    ]
+            ]);
 
         $validator
             ->scalar('etapa')
@@ -54,6 +60,7 @@ class PessoasTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
+        $rules->add($rules->isUnique(['cpf'], 'Este CPF já está cadastrado'));
 
         return $rules;
     }
