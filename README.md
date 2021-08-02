@@ -8,3 +8,4 @@ Eduardo Menezes
 3. Acima está todas as versões em que o projeto foi desenvolvido;
 
 O projeto possui testes básicos para cada action de cada controller, os mesmos podem ser acessados pela url.
+Para conectar o banco de dados basta ir na pasta 'config' e acessar o arquivo 'App.php'. Mais ou menos na linha 240 você poderá colocar a base de dados junto a senha.
