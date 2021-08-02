@@ -5,3 +5,5 @@ Eduardo Menezes
 1. É necessário executar o script SQL, o mesmo se encontra na pasta 'ArquivoSQL';
 2. Na tela de login o usuário é silveira@cover.com e a senha 1234;
 3. Acima está todas as versões em que o projeto foi desenvolvido;
+
+O projeto possui testes básicos para cada action de cada controller, os mesmos podem ser acessados pela url.
